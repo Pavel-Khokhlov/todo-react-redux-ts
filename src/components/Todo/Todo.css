@@ -1,0 +1,26 @@
+.todo {
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+  align-items: center;
+}
+
+.todo__check {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.todo__input {
+  width: 20px;
+  height: 20px;
+}
+
+.todo__label {
+  padding: 0;
+  margin: 0;
+  font-size: 22px;
+}
+
+.todo__label_done {
+  text-decoration: line-through;
+}
