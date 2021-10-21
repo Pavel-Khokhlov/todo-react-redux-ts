@@ -5,7 +5,8 @@
 }
 
 .todo__check {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20px 1fr;
   align-items: center;
   gap: 30px;
 }
@@ -19,6 +20,11 @@
   padding: 0;
   margin: 0;
   font-size: 22px;
+  -webkit-user-select: none;
+    /* user-select -- это нестандартное свойство */
+    -moz-user-select: none;
+    /* поэтому нужны префиксы */
+    -ms-user-select: none;
 }
 
 .todo__label_done {

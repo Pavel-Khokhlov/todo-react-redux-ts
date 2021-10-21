@@ -11,5 +11,4 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 
 export const selectTodos = (state: RootState) => state.todos.todos;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch;
+export const selectStatus= (state: RootState) => state.todos.status;

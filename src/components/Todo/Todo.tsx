@@ -1,34 +1,39 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeTodo, toggleTodo } from "../../todosSlice";
-import { ITodo } from "../../todosSlice";
+import { checkedTodo, deleteTodo } from "../../store/todosSlice";
+import { ITodo } from "../../store/todosSlice";
 import "./Todo.css";
 
 const Todo = (todo: ITodo) => {
   const dispatch = useDispatch();
 
   const handleRemoveTodo = () => {
-    dispatch(removeTodo(todo.id));
+    dispatch(deleteTodo(todo.id));
   };
 
   const handleToggleTodo = () => {
-    dispatch(toggleTodo(todo.id));
-  }
+    dispatch(checkedTodo(todo));
+  };
 
-  const labelClassName = `todo__label ${todo.completed ? "todo__label_done" : ""}`;
+  const labelClassName = `todo__label ${
+    todo.completed ? "todo__label_done" : ""
+  }`;
 
-  const removeBtnClassName = `btn ${todo.completed ? " btn-danger" : "btn-outline-danger disabled"}`;
+  const removeBtnClassName = `btn ${
+    todo.completed ? " btn-danger" : "btn-outline-danger disabled"
+  }`;
 
   return (
     <li className="todo">
-      <div className="todo__check" onChange={handleToggleTodo}>
+      <div className="todo__check" onClick={handleToggleTodo}>
         <input
           className="todo__input"
           type="checkbox"
-          id={todo.text}
+          checked={todo.completed}
+          readOnly
         />
-        <label className={labelClassName} htmlFor={todo.text}>
-          {todo.text}
+        <label className={labelClassName} htmlFor={todo.title}>
+          {todo.title}
         </label>
       </div>
       <button

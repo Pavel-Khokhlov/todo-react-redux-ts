@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../todosSlice";
+import { createTodo } from "../../store/todosSlice";
 import "./Form.css";
 
 const Form = () => {
@@ -11,12 +11,13 @@ const Form = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    value !== "" ? dispatch(addTodo(value)) : alert("Enter the task");
+    value !== "" ? dispatch(createTodo(value)) : alert("Enter the task");
     setValue("");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-    if(e.key === "Enter") dispatch(addTodo(value));
+    if(value === "") return;
+    if(e.key === "Enter") dispatch(createTodo(value));
     setValue("");
   };
 
@@ -26,7 +27,7 @@ const Form = () => {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-          <h2 className="form__title">ToDo application (React+Rredux+TS)</h2>
+          <h2 className="form__title">ToDo application (React+Redux+TS)</h2>
           <div className="mb-3">
             <label className="form-label">Enter new todo</label>
             <div className="form__container">

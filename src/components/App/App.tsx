@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import ListTodos from "./components/ListTodos/ListTodos";
-import Form from "./components/Form/Form";
+import ListTodos from "../ListTodos/ListTodos";
+import Form from "../Form/Form";
 
 function App() {
 
